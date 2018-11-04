@@ -6,7 +6,7 @@
 
 This is a patch to make Lee Semel's [Wolfenstein 5k](http://www.wolf5k.com/) demo, which rocked my socks off back in high school, run on modern browsers.
 
-![screenshot][screenshot.png]
+![screenshot](screenshot.png)
 
 If you're seeing this for the first time in 2018, it's... not impressive. Now, there are Javascript ports of say, [Team Fortress 2](https://github.com/toji/webgl-source), or the [actual Wolfenstein 3d](https://archive.org/details/msdos_Wolfenstein_3D_1992), running in a DOS emulator. But in 2002, Javascript wasn't for games. It was awful and slow, and every game made without Flash was some board game rendered with HTML tables. I thought it was rad that Wolfenstein 5K could render individual pixels at all, nevermind a working raycaster with sprites, textures, and shading. All code golfed into 5k, with so few dependencies it runs in _Netscape Navigator_.
 
