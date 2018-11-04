@@ -1,14 +1,16 @@
 # Wolfenstein 5k Running on Modern Browsers
 
+[Play the demo](https://parkertomatoes.github.io/wolf5k/wolf5k.html)
+
 ## Background
 
-This is a patch to make the [Wolfenstein 5k](http://www.wolf5k.com/) demo run on modern browsers, which rocked my socks off back in high school.
+This is a patch to make Lee Semel's [Wolfenstein 5k](http://www.wolf5k.com/) demo, which rocked my socks off back in high school, run on modern browsers.
 
 ![screenshot][screenshot.png]
 
 If you're seeing this for the first time in 2018, it's... not impressive. Now, there are Javascript ports of say, [Team Fortress 2](https://github.com/toji/webgl-source), or the [actual Wolfenstein 3d](https://archive.org/details/msdos_Wolfenstein_3D_1992), running in a DOS emulator. But in 2002, Javascript wasn't for games. It was awful and slow, and every game made without Flash was some board game rendered with HTML tables. I thought it was rad that Wolfenstein 5K could render individual pixels at all, nevermind a working raycaster with sprites, textures, and shading. All code golfed into 5k, with so few dependencies it runs in _Netscape Navigator_.
 
-But sadly, it hasn't worked in a decade because all major browsers have dropped XBM image support. The demo used this mechanism to dump pixels into an img element, so now the game looks like a broken image link, even though it's running in the background. I thought it would be fun for a Saturday project to get the demo working again
+But sadly, it hasn't worked in a decade because all major browsers have dropped XBM image support. The demo used this mechanism to dump pixels into an img element, so now the game looks like a broken image link, even though it's running in the background. I thought it would be fun for a Saturday project to get the demo working again.
 
 ## The Fix
 
