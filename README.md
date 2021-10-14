@@ -17,26 +17,38 @@ But sadly, it hasn't worked in a decade because all major browsers have dropped 
 My goal was to avoid hacking up the original source, since the code itself is a feature of the demo. Instead, this code was tacked on to the end. It intercepts assignments to "img.src" each frame, parses the XBM image passed to it, renders it to an HTML5 canvas, and copies that image back to the img tag. It's not particularly optimized, but it runs fine on my PC. I'm no good at code golfing, so I'm not even going to try to minify it.
 
 ```javascript
-var screen = document.images[0];
+var screen = document.images[0]; // this is how the demo finds the image it uses as a screen
 var canvas = document.createElement('canvas');
 canvas.width = screen.width;
 canvas.height = screen.height;
 const context = canvas.getContext('2d');
+
+// pattern to parse the width and height from the header of the generated XBM image
 var xbmHeader = /\s*#define\s*[^\s]+\s*(\d+)\s*#define\s*[^\s*]+\s*(\d+)\s*static\s*char\s*[^\s\[]+\[\]\s*=\s*{/;
+
+// demo renders the screen by generating an XBM document, and setting the "src" property of the image to a data URL
+// this patch intercept writes to the screen by monkey-patching the image element's "src" property
 Object.defineProperty(screen, 'src', { 
   set: function(src) {
+    // when setting the property to a regular image such as "a.gif", pass the attribute value through
     if (!/javascript:\d+;im;/.test(src)) {
       screen.setAttribute('src', src);
       return;
     }
+    
     const header = im.match(xbmHeader);
     if (header === null) {
       throw new Error('not an XBM: ' + src);
     }
+    
+    // extract hex values (e.g. "0x1A") from the XBM body. 
+    // each value is 8 black/white pixels bit-packed into an octet
     const pixels = im
       .substring(header.lastIndex)
       .match(/0x[\da-fA-F]{2,2}/g)
       .map(x => parseInt(x, 16));
+    
+    // draw pixels on the canvas, then copy the canvas to the screen
     const cvData = context.createImageData(header[1], header[2]);
     let cvDataIndex = 0;
     for (const pixel of pixels) {
@@ -53,4 +65,3 @@ Object.defineProperty(screen, 'src', {
   }
 });
 ```
-
