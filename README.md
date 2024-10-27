@@ -4,7 +4,7 @@
 
 ## Background
 
-This is a patch to make Lee Semel's [Wolfenstein 5k](http://www.wolf5k.com/) demo, which rocked my socks off back in high school, run on modern browsers.
+This is a patch to make Lee Semel's [Wolfenstein 5k](https://web.archive.org/web/20220426224134/http://www.wolf5k.com/) demo, which rocked my socks off back in high school, run on modern browsers.
 
 ![screenshot](screenshot.png)
 
